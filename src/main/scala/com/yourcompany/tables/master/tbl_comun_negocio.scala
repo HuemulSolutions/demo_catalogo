@@ -20,6 +20,8 @@ class tbl_comun_negocio(huemulBigDataGov: huemul_BigDataGovernance, Control: hue
   this.setGlobalPaths(huemulBigDataGov.GlobalSettings.MASTER_SmallFiles_Path)
   //Ruta en HDFS especifica para esta tabla (Globalpaths / localPath)
   this.setLocalPath("catalogo/")
+  //Frecuencia de actualización
+  this.setFrequency(huemulType_Frequency.ANY_MOMENT)
   
   /**********   S E T E O   I N F O R M A T I V O   ****************************************/
   //Nombre del contacto de TI

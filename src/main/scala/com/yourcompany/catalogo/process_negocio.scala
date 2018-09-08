@@ -8,6 +8,7 @@ import org.apache.spark.sql.types._
 import com.yourcompany.tables.master._
 import com.yourcompany.catalogo.datalake._
 import com.yourcompany.settings._
+import com.huemulsolutions.bigdata.control.huemulType_Frequency
 
 //import com.huemulsolutions.bigdata.tables._
 //import com.huemulsolutions.bigdata.dataquality._
@@ -62,12 +63,12 @@ object process_negocio {
     param_mes: mes de los datos  <br>
    */
   def process_master(huemulBigDataGov: huemul_BigDataGovernance, ControlParent: huemul_Control, param_ano: Integer, param_mes: Integer): Boolean = {
-    val Control = new huemul_Control(huemulBigDataGov, ControlParent)    
+    val Control = new huemul_Control(huemulBigDataGov, ControlParent, huemulType_Frequency.ANY_MOMENT)    
     
     try {             
       /*************** AGREGAR PARAMETROS A CONTROL **********************/
-      Control.AddParamInfo("param_ano", param_ano.toString())
-      Control.AddParamInfo("param_mes", param_mes.toString())
+      Control.AddParamYear("param_ano", param_ano)
+      Control.AddParamMonth("param_mes", param_mes)
       
       
       /*************** ABRE RAW DESDE DATALAKE **********************/

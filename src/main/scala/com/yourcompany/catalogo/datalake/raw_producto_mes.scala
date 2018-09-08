@@ -18,6 +18,7 @@ class raw_producto_mes(huemulBigDataGov: huemul_BigDataGovernance, Control: huem
    this.LogicalName = "raw_producto_mes"
    this.Description = "Maestro de productos"
    this.GroupName = "catalogo"
+   this.setFrequency(huemulType_Frequency.ANY_MOMENT)
    
    //Crea variable para configuración de lectura del archivo
    val CurrentSetting = new huemul_DataLakeSetting(huemulBigDataGov)
@@ -35,6 +36,7 @@ class raw_producto_mes(huemulBigDataGov: huemul_BigDataGovernance, Control: huem
    CurrentSetting.FileType = huemulType_FileType.TEXT_FILE
    //expecifica el nombre del contacto del archivo en TI
    CurrentSetting.ContactName = "Area de Sistemas"
+   
 
    //Indica como se lee el archivo
    CurrentSetting.DataSchemaConf.ColSeparatorType = huemulType_Separator.POSITION  //POSITION;CHARACTER
@@ -61,10 +63,10 @@ class raw_producto_mes(huemulBigDataGov: huemul_BigDataGovernance, Control: huem
   */
   def open(Alias: String, ControlParent: huemul_Control, ano: Integer, mes: Integer, dia: Integer, hora: Integer, min: Integer, seg: Integer): Boolean = {
     //Crea registro de control de procesos
-     val control = new huemul_Control(huemulBigDataGov, ControlParent)
+     val control = new huemul_Control(huemulBigDataGov, ControlParent, huemulType_Frequency.MONTHLY)
     //Guarda los parámetros importantes en el control de procesos
-    control.AddParamInfo("Ano", ano.toString())
-    control.AddParamInfo("Mes", mes.toString())
+    control.AddParamYear("Ano", ano)
+    control.AddParamMonth("Mes", mes)
        
     try { 
       //NewStep va registrando los pasos de este proceso, también sirve como documentación del mismo.
@@ -121,7 +123,7 @@ object raw_producto_mes_test {
     //Creación API
     val huemulBigDataGov  = new huemul_BigDataGovernance(s"Testing DataLake - ${this.getClass.getSimpleName}", args, Global)
     //Creación del objeto control, por default no permite ejecuciones en paralelo del mismo objeto (corre en modo SINGLETON)
-    val Control = new huemul_Control(huemulBigDataGov, null)
+    val Control = new huemul_Control(huemulBigDataGov, null, huemulType_Frequency.ANY_MOMENT)
     
     /*************** PARAMETROS **********************/
     var param_ano = huemulBigDataGov.arguments.GetValue("ano", null, "Debe especificar el parámetro año, ej: ano=2017").toInt
