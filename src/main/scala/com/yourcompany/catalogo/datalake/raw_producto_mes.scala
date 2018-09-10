@@ -15,7 +15,6 @@ import org.apache.spark.sql.types._
  * ejemplo de nombre: raw_institucion_mes
  */
 class raw_producto_mes(huemulBigDataGov: huemul_BigDataGovernance, Control: huemul_Control) extends huemul_DataLake(huemulBigDataGov, Control) with Serializable  {
-   this.LogicalName = "raw_producto_mes"
    this.Description = "Maestro de productos"
    this.GroupName = "catalogo"
    this.setFrequency(huemulType_Frequency.ANY_MOMENT)

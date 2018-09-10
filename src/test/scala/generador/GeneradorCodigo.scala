@@ -26,7 +26,7 @@ class AppTest {
                                   , "tbl_comun_negocio"//NewTableName
                                   
                                   , huemulType_Tables.Master //TableType
-                                  , true //EsMes
+                                  , huemulType_Frequency.MONTHLY //EsMes
                                   , false //AutoMapping)
                                   )                    
        return true
