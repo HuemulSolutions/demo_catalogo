@@ -131,7 +131,7 @@ object process_producto_Migrar {
     var param = huemulBigDataGov.ReplaceWithParams("{{YYYY}}-{{MM}}-{{DD}}", param_ano, param_mes, param_dia, 0, 0, 0)
     
    val clase = new tbl_comun_producto(huemulBigDataGov, null)
-   clase.CopyToDest(param, "[[environment]]")
+   clase.copyToDest(param, "[[environment]]")
    huemulBigDataGov.close
  }
  
