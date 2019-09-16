@@ -48,7 +48,7 @@ class tbl_comun_producto(huemulBigDataGov: huemul_BigDataGovernance, Control: hu
     
   /**********   S E G U R I D A D   ****************************************/
   //Solo estos package y clases pueden ejecutar en modo full, si no se especifica todos pueden invocar
-  this.WhoCanRun_executeFull_addAccess("process_producto_mes", "com.yourcompany.catalogo")
+  this.WhoCanRun_executeFull_addAccess("process_producto", "com.yourcompany.catalogo")
   //Solo estos package y clases pueden ejecutar en modo solo Insert, si no se especifica todos pueden invocar
   //this.WhoCanRun_executeOnlyInsert_addAccess("[[MyclassName]]", "[[my.package.path]]")
   //Solo estos package y clases pueden ejecutar en modo solo Update, si no se especifica todos pueden invocar
