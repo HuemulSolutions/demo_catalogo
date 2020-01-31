@@ -27,14 +27,14 @@ www.huemulsolutions.com/ /ejemplos/sbif_23/huemul_install_sbif.sh
 www.huemulsolutions.com/ /ejemplos/sbif_23/huemul-drivers.zip
 
 
-** Ejecución process_negocio  
+## Ejecución process_negocio  
 Se ejecuta con el siguiente comando:
 
 ```shell
 spark-submit --master local --jars huemul-bigdatagovernance-2.3.jar,huemul-sql-decode-1.0.jar,demo_settings-2.3.jar,demo_catalogo-2.3.jar,postgresql-9.4.1212.jar --class com.yourcompany.catalogo.process_negocio  demo_sbif-2.3.jar environment=production,ano=2018,mes=6
 ```
 
-** Ejecución process_producto  
+## Ejecución process_producto  
 Se ejecuta con el siguiente comando:
 
 ```shell
