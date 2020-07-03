@@ -121,26 +121,3 @@ object process_negocio {
   }
   
 }
-
-/**
-* Objeto permite mover archivos HDFS desde ambiente origen (ejemplo producción) a ambientes destino (ejemplo ambiente experimental)
-*/
-object process_negocio_Migrar {
- 
- def main(args : Array[String]) {
-   //Creacion API
-    val huemulBigDataGov  = new huemul_BigDataGovernance(s"Migración de datos tabla tbl_comun_negocio  - ${this.getClass.getSimpleName}", args, globalSettings.Global)
-    
-    /*************** PARAMETROS **********************/
-    var param_ano = huemulBigDataGov.arguments.GetValue("ano", null, "Debe especificar el parametro año, ej: ano=2017").toInt
-    var param_mes = huemulBigDataGov.arguments.GetValue("mes", null, "Debe especificar el parametro mes, ej: mes=12").toInt
-    var param_dia = 1
-   
-    var param = huemulBigDataGov.ReplaceWithParams("{{YYYY}}-{{MM}}-{{DD}}", param_ano, param_mes, param_dia, 0, 0, 0)
-    
-   val clase = new tbl_comun_negocio(huemulBigDataGov, null)
-   clase.copyToDest(param, "[[environment]]")
-   huemulBigDataGov.close
- }
- 
-}
