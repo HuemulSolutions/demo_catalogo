@@ -4,7 +4,6 @@ package com.yourcompany.tables.master
 import com.huemulsolutions.bigdata.common._
 import com.huemulsolutions.bigdata.control._
 import com.huemulsolutions.bigdata.tables._
-import com.huemulsolutions.bigdata.dataquality._
 import org.apache.spark.sql.types._
 
 
@@ -61,10 +60,10 @@ class tbl_comun_negocio(huemulBigDataGov: huemul_BigDataGovernance, Control: hue
 
     
     
-  val negocio_id = new huemul_Columns (StringType, true, "Codigo del negocio (cons, hipo)") 
+  val negocio_id: huemul_Columns = new huemul_Columns (StringType, true, "Codigo del negocio (cons, hipo)")
           .setIsPK().securityLevel(huemulType_SecurityLevel.Public)  
   
-  val negocio_nombre = new huemul_Columns (StringType, true, "Nombre del negocio (Consumo, Hipotecario,etc)") 
+  val negocio_nombre: huemul_Columns = new huemul_Columns (StringType, true, "Nombre del negocio (Consumo, Hipotecario,etc)")
           .securityLevel(huemulType_SecurityLevel.Public)  
           .setMDM_EnableOldValue().setMDM_EnableDTLog().setMDM_EnableProcessLog()  
 
