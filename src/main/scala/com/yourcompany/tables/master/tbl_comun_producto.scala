@@ -4,7 +4,6 @@ package com.yourcompany.tables.master
 import com.huemulsolutions.bigdata.common._
 import com.huemulsolutions.bigdata.control._
 import com.huemulsolutions.bigdata.tables._
-import com.huemulsolutions.bigdata.dataquality._
 import org.apache.spark.sql.types._
 
 
@@ -60,11 +59,11 @@ class tbl_comun_producto(huemulBigDataGov: huemul_BigDataGovernance, Control: hu
 
   /**********   C O L U M N A S   ****************************************/
     
-  val producto_id = new huemul_Columns (StringType, true, "codigo del producto") 
+  val producto_id: huemul_Columns = new huemul_Columns (StringType, true, "codigo del producto")
           .setIsPK().setDQ_MinLen(2,"DQ_ERROR_001").setDQ_MaxLen(10,"DQ_ERROR_001")
           .securityLevel(huemulType_SecurityLevel.Public)    
 
-  val producto_nombre = new huemul_Columns (StringType, true, "Nombre del producto") 
+  val producto_nombre: huemul_Columns = new huemul_Columns (StringType, true, "Nombre del producto")
           .setDQ_MinLen(5,"DQ_ERROR_002").setDQ_MaxLen(100,"DQ_ERROR_002").setMDM_EnableOldValue()
           .securityLevel(huemulType_SecurityLevel.Public)  
 
