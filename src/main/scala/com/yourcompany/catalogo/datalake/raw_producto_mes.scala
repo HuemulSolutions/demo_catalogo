@@ -37,7 +37,7 @@ class raw_producto_mes(huemulBigDataGov: huemul_BigDataGovernance, Control: huem
    
 
    //Indica como se lee el archivo
-     .setHeaderColumnDelimiterType(huemulType_Separator.POSITION)  //POSITION;CHARACTER
+     .setColumnDelimiterType(huemulType_Separator.POSITION)  //POSITION;CHARACTER
    //Forma detallada
      .addColumn("producto_id", "producto_id", StringType, "codigo del producto",0,9)
      .addColumn("producto_nombre", "producto_nombre", StringType, "Nombre del producto",10,48)
